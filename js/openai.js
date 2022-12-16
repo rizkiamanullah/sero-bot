@@ -12,9 +12,9 @@
 //   "stop": [" Human:", " AI:"]
 // }'
 
-const url = 'https://api.openai.com/v1/completions';
-const headerPrompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. Human: ";
 function fetchBot(prompt) {
+    const url = 'https://api.openai.com/v1/completions';
+    const headerPrompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. Human: ";
     chat_log.push({message: headerPrompt, type:'bot'});
     var usedPrompt = getMessage() + prompt;
     var not = '';
