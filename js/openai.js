@@ -50,8 +50,8 @@ function fetchBot(prompt) {
                 var anwser_clean = anwser.replace(usedPrompt,''); 
                 var anwser_clean = anwser_clean.replace('AI Assistant: ',''); 
                 var anwser_clean = anwser_clean.replace('AI: ',''); 
-                // console.log(anwser);
-                // console.log(anwser_clean);
+                console.log(anwser);
+                console.log(anwser_clean);
                 var data = {
                     message: 'AI: '+anwser_clean,
                     type: 'Bot',
