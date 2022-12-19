@@ -90,7 +90,7 @@
         </div>
         <input class="form-control mb-2" type="text" name="human_message" id="human_message" placeholder="Say hello">
         <button id="send_chat" class="btn btn-block btn-info">Send</button>
-        <a class="pl-3" href="#clear" onclick="deleteChatLog()">Clear chat</a>
+        <a class="pl-3" href="https://rizkiamanullah.github.io/sero-bot/">Clear chat</a>
         <!-- <div class="col-12">
             <div class="card my-2">
                 <div class="card-body">
@@ -156,6 +156,7 @@
     </script>
     <script>
         function blob_human(a) {
+            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
             return `
                 <div class="col-12 my-1 flex">
                     <div class="col-4 float-end">
@@ -169,6 +170,7 @@
         };
 
         function blob_bot(a) {
+            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
             return `
                 <div class="col-12 my-1 flex">
                     <div class="col-4 float-start">

@@ -65,11 +65,12 @@ function fetchBot(prompt) {
 }
 
 function deleteChatLog(){
-    chat_log.remove()
-    .then(function(){
-        console.log('cleaned');
-    })
-    .catch(function(e){
-        console.log('failed: ' + e.message);
-    })
+    window.location.href;
+    // chat_log.remove()
+    // .then(function(){
+    //     console.log('cleaned');
+    // })
+    // .catch(function(e){
+    //     console.log('failed: ' + e.message);
+    // });
 }
