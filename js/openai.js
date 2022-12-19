@@ -43,7 +43,8 @@ function fetchBot(prompt) {
             },
             data: JSON.stringify(data),
             success: function(res){
-                var anwser = res.choices[0].text; 
+                var anwser = res.choices[0].text;
+                // var anwser_clean = anwser_clean.replace(': ',''); 
                 var anwser_clean = anwser.replace(usedPrompt,''); 
                 var anwser_clean = anwser_clean.replace('AI Assistant: ',''); 
                 var anwser_clean = anwser_clean.replace('AI: ',''); 
@@ -102,6 +103,7 @@ function initBot() {
                 var anwser_clean = anwser.replace(usedPrompt,''); 
                 var anwser_clean = anwser_clean.replace('AI Assistant: ',''); 
                 var anwser_clean = anwser_clean.replace('AI: ',''); 
+                // var anwser_clean = splitBotWords(anwser); 
                 var data = {
                     message: 'AI: '+anwser_clean,
                     type: 'Bot',
@@ -117,6 +119,10 @@ function initBot() {
             }
         });
     });
+}
+
+function splitBotWords(a){
+    return a.split(':')[1];
 }
 
 function deleteChatLog(){

@@ -96,6 +96,11 @@
         </div>
         <button id="send_chat" class="btn btn-block btn-info d-none">Send</button>
     </div>
+    <div class="col-12">
+        <div class="text-center">
+            Made with ❤️ by <a href="https://rizkiamanullah.github.io/">Rizki Amanullah Hakim</a>
+        </div>
+    </div>
     <!-- script section -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -183,7 +188,7 @@
                 .on('value', function(s){
                     var message = s.val();
                     for (let list in message){
-                        newPrompt+=message[list].message+'\n';
+                        newPrompt+=message[list].message;
                     };
                 });
                 return newPrompt;
@@ -194,6 +199,7 @@
             if (a != ''){
                 $('input[name="human_message"]').val('');
                 $('#chat_box').append(blob_human(a));
+                // a += ';;';
                 saveMessage('human',a);
                 fetchBot(a);
                 $("html, body").animate({ scrollTop: $(document).height() }, 0);
