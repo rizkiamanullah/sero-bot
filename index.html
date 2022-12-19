@@ -97,7 +97,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function(){
+            initBot();
             deleteChatLog();
+            
             const headerPrompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.";
             chat_log.push({message: headerPrompt, type:'bot'});
             $('.switch').html(`
@@ -138,7 +140,6 @@
     </script>
     <script>
         function blob_human(a) {
-            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
             return `
                 <div class="col-12 my-1 flex">
                     <div class="col-4 float-end">
@@ -152,7 +153,6 @@
         };
 
         function blob_bot(a) {
-            $("html, body").animate({ scrollTop: $(document).height() }, 1000);
             return `
                 <div class="col-12 my-1 flex">
                     <div class="col-4 float-start">
@@ -192,7 +192,7 @@
                 $('#chat_box').append(blob_human(a));
                 saveMessage('human',a);
                 fetchBot(a);
-                $("html, body").animate({ scrollTop: $(document).height() }, 1000);
+                $("html, body").animate({ scrollTop: $(document).height() }, 0);
             } else {
                 getMessage();
             }
