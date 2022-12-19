@@ -47,6 +47,7 @@ function fetchBot(prompt) {
                 var anwser_clean = anwser.replace(usedPrompt,''); 
                 var anwser_clean = anwser_clean.replace('AI Assistant: ',''); 
                 var anwser_clean = anwser_clean.replace('AI: ',''); 
+                var anwser_clean = anwser_clean.replace('AI:',''); 
                 console.log(anwser);
                 console.log(anwser_clean);
                 var data = {
@@ -54,8 +55,10 @@ function fetchBot(prompt) {
                     type: 'Bot',
                 }
                 chat_log.push(data);
-                $('#chat_box').append(blob_bot(anwser_clean));
-                $("html, body").animate({ scrollTop: $(document).height() }, 0);
+                if (anwser_clean != ''){
+                    $('#chat_box').append(blob_bot(anwser_clean));
+                    $("html, body").animate({ scrollTop: $(document).height() }, 0);
+                }
             },
             error: function(e){
                 console.log(e);
