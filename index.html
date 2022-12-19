@@ -27,7 +27,7 @@
 
     section{
     width: 100%;
-    height: 100vh;
+    height: 30vh;
     background: linear-gradient(-45deg, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);;
     background-size: 400% 400%;
     position: relative;
@@ -75,67 +75,53 @@
 <body>
     <!-- content section -->
     <section>
-        <div class="content p-5">
-            <div class="title">
-                <div class="row">
-                    <div class="col-4 switch" data-mode=""></div>
-                    <div class="col-8" style="padding-top : 4%;">
-                        SEROBOT
-                    </div>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="card my-2">
-                    <div class="card-body">
-                        <div class="col-12">
-                            <div id="chat_box" class="row"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-11">
-                        <input type="text" name="human_message" id="human_message" placeholder="Type something" class="form-control">
-                    </div>
-                    <div class="col-1">
-                        <button id="send_chat" class="btn btn-block btn-info">
-                            Send
-                        </button>
-                    </div>
+        <div class="title">
+            <div class="row">
+                <div class="col-4 switch" data-mode=""></div>
+                <div class="col-8" style="padding-top : 4%;">
+                    SEROBOT
                 </div>
             </div>
         </div>
     </section>
+    <div class="container">
+        <div id="chat_box"></div>
+        <input class="form-control" type="text" name="human_message" id="human_message" placeholder="Say hello">
+        <button id="send_chat" class="btn btn-block btn-info">Send</button>
+        <!-- <div class="col-12">
+            <div class="card my-2">
+                <div class="card-body">
+                    <div class="col-12">
+                        <div id="chat_box" class="row"></div>
+                    </div>
+                </div>
+            </div>
+            <a href="javascript:window.reload" onclick="deleteChatLog()">Clear Chat</a>
+            <div class="row">
+                <div class="col-12">
+                    <input type="text" name="human_message" id="human_message" placeholder="Type something" class="form-control">
+                    <button id="send_chat" class="btn btn-block btn-info">
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div> -->
+    </div>
     <!-- script section -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/downloadjs/1.4.8/download.min.js" integrity="sha512-WiGQZv8WpmQVRUFXZywo7pHIO0G/o3RyiAJZj8YXNN4AV7ReR1RYWVmZJ6y3H06blPcjJmG/sBpOVZjTSFFlzQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
         $(document).ready(function(){
             deleteChatLog();
-                $('.switch').html(`
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                `);
-                $(this).attr('data-mode','light');
-                $('body').css('background-color','#fff');
-                $('.card').css('background-color','#fff');
-                $('.card').css('border-color','#4c4c4c');
-            var hours = (new Date()).getHours();
-            // if ( hours > 6 && hours < 17){ // daytime
-            //     $('.switch').html(`
-            //         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-            //     `);
-            //     $(this).attr('data-mode','light');
-            //     $('body').css('background-color','#fff');
-            //     $('.card').css('background-color','#fff');
-            //     $('.card').css('border-color','#4c4c4c');
-            // } else {
-            //     $('.switch').html(`
-            //         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-            //     `);
-            //     $(this).attr('mode','light');
-            //     $('body').css('background-color','#111827');
-            //     $('.card').css('background-color','#212f4d');
-            //     $('.card').css('border-color','#415d99');
-            // }
+            const headerPrompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly.";
+            chat_log.push({message: headerPrompt, type:'bot'});
+            $('.switch').html(`
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            `);
+            $(this).attr('data-mode','light');
+            $('body').css('background-color','#fff');
+            $('.card').css('background-color','#fff');
+            $('.card').css('border-color','#4c4c4c');
         });
         
         $('.switch').click(function(){

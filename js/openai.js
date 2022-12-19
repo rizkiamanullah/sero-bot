@@ -14,8 +14,6 @@
 
 function fetchBot(prompt) {
     const url = 'https://api.openai.com/v1/completions';
-    const headerPrompt = "The following is a conversation with an AI assistant. The assistant is helpful, creative, clever, and very friendly. Human: ";
-    chat_log.push({message: headerPrompt, type:'bot'});
     var usedPrompt = getMessage() + prompt;
     var not = '';
     database
@@ -66,10 +64,12 @@ function fetchBot(prompt) {
     });
 }
 
-// function deleteChatLog(){
-//     chat_log.listDocuments().then(val => {
-//         val.map((val) => {
-//             val.delete()
-//         })
-//     })
-// }
+function deleteChatLog(){
+    chat_log.remove()
+    .then(function(){
+        console.log('cleaned');
+    })
+    .catch(function(e){
+        console.log('failed: ' + e.message);
+    })
+}
