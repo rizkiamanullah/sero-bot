@@ -85,12 +85,16 @@
         </div>
     </section>
     <div class="container">
-        <div class="col-md-12 py-4">
-            <div id="chat_box" class="row"></div>
-            <input class="form-control mb-2" type="text" name="human_message" id="human_message" placeholder="Say hello">
-            <button id="send_chat" class="btn btn-block btn-info">Send</button>
+        <div id="loading">
+            <br>
+            <h2>Initializing...</h2>
         </div>
-        <a class="pl-3" href="https://rizkiamanullah.github.io/sero-bot/">Clear chat</a>
+        <div id="hci" class="col-md-12 py-4 d-none">
+            <div id="chat_box" class="row mb-2"></div>
+            <input class="form-control mb-2" type="text" name="human_message" id="human_message" placeholder="Say hello">
+            <a class="pl-3" href="https://rizkiamanullah.github.io/sero-bot/">Clear chat</a>
+        </div>
+        <button id="send_chat" class="btn btn-block btn-info d-none">Send</button>
     </div>
     <!-- script section -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js" integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

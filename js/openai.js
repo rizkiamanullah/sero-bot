@@ -108,7 +108,9 @@ function initBot() {
                 }
                 chat_log.push(data);
                 console.log('bot initiated');
-                // console.log(anwser_clean);
+                $('#loading').addClass('d-none');
+                $('#hci').removeClass('d-none');
+                $('#send_chat').removeClass('d-none');
             },
             error: function(e){
                 console.log('init failed: '+e);
