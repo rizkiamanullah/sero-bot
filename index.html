@@ -85,9 +85,12 @@
         </div>
     </section>
     <div class="container">
-        <div id="chat_box"></div>
-        <input class="form-control" type="text" name="human_message" id="human_message" placeholder="Say hello">
+        <div class="col-md-12 py-4">
+            <div id="chat_box" class="row"></div>
+        </div>
+        <input class="form-control mb-2" type="text" name="human_message" id="human_message" placeholder="Say hello">
         <button id="send_chat" class="btn btn-block btn-info">Send</button>
+        <a class="pl-3" href="#clear" onclick="deleteChatLog()">Clear chat</a>
         <!-- <div class="col-12">
             <div class="card my-2">
                 <div class="card-body">
