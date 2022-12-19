@@ -105,7 +105,7 @@ function initBot() {
                 }
                 chat_log.push(data);
                 console.log('bot initiated');
-                console.log(anwser_clean);
+                // console.log(anwser_clean);
             },
             error: function(e){
                 console.log('init failed: '+e);
