@@ -56,6 +56,7 @@ function fetchBot(prompt) {
                 }
                 chat_log.push(data);
                 $('#chat_box').append(blob_bot(anwser_clean));
+                $("html, body").animate({ scrollTop: $(document).height() }, 1000);
             },
             error: function(e){
                 console.log(e);
